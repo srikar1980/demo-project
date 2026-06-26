@@ -1,0 +1,100 @@
+/* index.css */
+
+:root {
+  /* Colors */
+  --primary-color: #2563eb;
+  --secondary-color: #6b7280;
+  --success-color: #16a34a;
+  --danger-color: #dc2626;
+
+  --text-color: #1f2937;
+  --heading-color: #111827;
+
+  --background-color: #f5f5f5;
+  --white: #ffffff;
+
+  --border-color: #d1d5db;
+
+  /* Fonts */
+  --font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+
+  /* Font Sizes */
+  --fs-sm: 14px;
+  --fs-md: 16px;
+  --fs-lg: 20px;
+  --fs-xl: 28px;
+
+  /* Font Weights */
+  --fw-normal: 400;
+  --fw-medium: 500;
+  --fw-bold: 700;
+}
+
+/* Reset */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-family: var(--font-family);
+  font-size: var(--fs-md);
+  line-height: 1.5;
+}
+
+/* Root */
+
+#root {
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+}
+
+/* Headings */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--heading-color);
+  font-weight: var(--fw-bold);
+  margin-bottom: 12px;
+}
+
+h1 {
+  font-size: var(--fs-xl);
+}
+
+h2 {
+  font-size: var(--fs-lg);
+}
+
+/* Paragraph */
+
+p {
+  margin-bottom: 10px;
+}
+
+/* Links */
+
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Buttons */
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+}
