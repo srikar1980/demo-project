@@ -2,7 +2,7 @@
 
 ## Topics Covered
 
-Date:= 25-06-2026 / Thurs day
+### Date: 25-06-2026 (Thursday)
 
 ### 1. Creating a Reusable Component
 
@@ -49,11 +49,12 @@ Date:= 25-06-2026 / Thurs day
 - Passing dynamic text
 - Dynamic styles
 - Dynamic events (`onClick`)
-- Rest (`...rest`) and Spread (`...rest`) operators
+- Rest (`...rest`) operator
+- Spread (`...rest`) operator
 
 ---
 
-Date:= 26-06-2026 / Friday
+## Date: 26-06-2026 (Friday)
 
 ### 7. React Icons
 
@@ -116,6 +117,279 @@ Displaying different UI based on application state:
 - Empty state message
 - Scrollable job list
 
+---
+
+## Date: 27-06-2026 (Saturday)
+
+### 14. API Integration
+
+- Understanding APIs
+- Consuming public APIs
+- Fetching posts from server
+- Rendering API response data
+
+Example API:
+
+```text
+https://jsonplaceholder.typicode.com/posts?_limit=6
+```
+
+---
+
+### 15. Fetch API
+
+Topics Covered
+
+- Making GET requests
+- Understanding asynchronous operations
+- `.then()`
+- `.catch()`
+- Converting response to JSON
+
+Example:
+
+```js
+fetch(url)
+  .then(response => response.json())
+  .then(data => setPosts(data))
+  .catch(error => console.log(error));
+```
+
+---
+
+### 16. Axios
+
+Installation
+
+```bash
+npm install axios
+```
+
+Topics Covered
+
+- `axios.get()`
+- `async/await`
+- Automatic JSON parsing
+- Cleaner syntax compared to Fetch API
+
+Example:
+
+```js
+const response = await axios.get(url);
+
+setPosts(response.data);
+```
+
+---
+
+### 17. Error Handling
+
+Topics Covered
+
+- `try`
+- `catch`
+- Handling failed requests
+- Updating loading state on error
+
+Example
+
+```js
+try {
+
+ const response = await axios.get(url);
+
+ setPosts(response.data);
+
+}
+catch(error){
+
+ console.log(error);
+
+}
+```
+
+---
+
+### 18. Understanding useEffect
+
+What is a Side Effect?
+
+A side effect is any operation performed outside the rendering process.
+
+Examples:
+
+- API Calls
+- Timers
+- Event Listeners
+- Local Storage
+- DOM Manipulation
+- WebSocket Connections
+- Subscriptions
+
+---
+
+### 19. useEffect Scenarios
+
+#### Scenario 1 — No Dependency Array
+
+Runs after every render.
+
+```js
+useEffect(() => {
+
+ console.log("Effect Executed");
+
+});
+```
+
+Use Cases
+
+- Debugging
+- Logging
+- Rarely used in production
+
+---
+
+#### Scenario 2 — Empty Dependency Array
+
+Runs only once.
+
+```js
+useEffect(() => {
+
+ fetchPosts();
+
+}, []);
+```
+
+Equivalent to:
+
+```text
+Component Mounted
+```
+
+Common Usage
+
+- API Calls
+- Initial Setup
+- Authentication Check
+
+---
+
+#### Scenario 3 — Dependency Array
+
+Runs whenever dependency changes.
+
+```js
+useEffect(() => {
+
+ fetchPosts();
+
+}, [search]);
+```
+
+Runs when:
+
+- `search` changes
+
+---
+
+#### Scenario 4 — Multiple Dependencies
+
+```js
+useEffect(() => {
+
+ fetchPosts();
+
+}, [search, page]);
+```
+
+Runs when:
+
+- `search` changes
+- `page` changes
+
+Does not run for unrelated state changes.
+
+---
+
+### 20. Infinite API Calls
+
+Example
+
+```js
+useEffect(() => {
+
+ fetchPosts();
+
+});
+```
+
+Flow
+
+```text
+Render
+
+↓
+
+API Call
+
+↓
+
+setState()
+
+↓
+
+Re-render
+
+↓
+
+API Call
+
+↓
+
+setState()
+
+↓
+
+Infinite Loop
+```
+
+Lesson Learned
+
+Always provide a dependency array when making API calls.
+
+---
+
+### 21. Cleanup Function
+
+Purpose
+
+Cleaning resources before component unmounts.
+
+Example
+
+```js
+useEffect(() => {
+
+ const timer = setTimeout(() => {
+
+ }, 2000);
+
+ return () => {
+
+   clearTimeout(timer);
+
+ };
+
+}, []);
+```
+
+Common Cleanup Tasks
+
+- `clearTimeout()`
+- `clearInterval()`
+- `removeEventListener()`
 
 ---
 
@@ -134,9 +408,17 @@ Displaying different UI based on application state:
 - Event Handling
 - Callback Functions
 - Conditional Rendering
+- React Icons
+- API Calls
+- Fetch API
+- Axios
+- Async/Await
+- Try/Catch
+- Dependency Arrays
+- Side Effects
+- Cleanup Functions
 - Rest Operator
 - Spread Operator
-- React Icons
 - CSS Variables
 - Flexbox
 - Reusable Components
@@ -145,7 +427,9 @@ Displaying different UI based on application state:
 
 ## Next Topic
 
-### React Router
+# React Router
+
+Topics Planned
 
 - Why Routing is required
 - Single Page Applications (SPA)
@@ -154,5 +438,10 @@ Displaying different UI based on application state:
 - Route
 - Link
 - NavLink
+- Dynamic Routes
 - Nested Routes
 - Protected Routes
+- Outlet
+- Navigate
+- Route Parameters
+- 404 Page Handling

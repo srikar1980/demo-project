@@ -1,30 +1,55 @@
-import { Fragment } from "react";
+// import { Fragment } from "react";
+// import { MdDelete } from "react-icons/md";
+
+// const JobPost = ({
+//   title,
+//   location,
+//   experience,
+//   postedDate,
+//   onDelete,
+// }) => {
+//   return (
+//     <Fragment>
+//       <div className="job-card">
+//         <div className="card-header">
+//           <h2>JobPost Title: {title}</h2>
+
+//           <MdDelete
+//             className="delete-icon"
+//             onClick={onDelete}
+//           />
+//         </div>
+
+//         <p>Location: {location}</p>
+//         <p>Experience: {experience}</p>
+//         <p>Posted Date: {postedDate}</p>
+//       </div>
+//     </Fragment>
+//   );
+// };
+
+// export { JobPost };
+
+
 import { MdDelete } from "react-icons/md";
 
 const JobPost = ({
-  title,
-  location,
-  experience,
-  postedDate,
+  post,
   onDelete,
 }) => {
   return (
-    <Fragment>
-      <div className="job-card">
-        <div className="card-header">
-          <h2>JobPost Title: {title}</h2>
+    <div className="job-card">
+      <div className="card-header">
+        <h2>{post.title}</h2>
 
-          <MdDelete
-            className="delete-icon"
-            onClick={onDelete}
-          />
-        </div>
-
-        <p>Location: {location}</p>
-        <p>Experience: {experience}</p>
-        <p>Posted Date: {postedDate}</p>
+        <MdDelete
+          className="delete-icon"
+          onClick={onDelete}
+        />
       </div>
-    </Fragment>
+
+      <p>{post.body}</p>
+    </div>
   );
 };
 
