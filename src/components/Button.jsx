@@ -1,4 +1,5 @@
-const Button = ({
+const Button = (props) => {
+  const {
   text,
   width,
   height,
@@ -6,7 +7,7 @@ const Button = ({
   textColor,
   type = "button",
   ...rest
-}) => {
+}=props;
   const baseStyle = {
     border: "none",
     borderRadius: "5px",
