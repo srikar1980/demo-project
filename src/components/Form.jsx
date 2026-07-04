@@ -536,7 +536,7 @@ const FormComponent = () => {
 
   return (
     <div className="container">
-      <h4>Employee Registration</h4>
+      <h1 className="form-heading">Student Registration</h1>
 
       <form onSubmit={handleSubmit}>
         <input

@@ -1,9 +1,9 @@
-import NewForm from "../components/NewForm";
+import Form from "../components/Form";
 
 const Contact = () => {
   return (
     <div className="contact-page">
-      <NewForm />
+      <Form />
     </div>
   );
 };

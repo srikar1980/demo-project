@@ -1,152 +1,226 @@
 main {
-min-height: 100vh;
-
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   background: #f5f5f5;
 }
-
 .content-area {
   flex: 1;
 }
-
 .job-container {
   width: 650px;
   background: white;
-
   padding: var(--spacing-lg);
-
   border-radius: var(--radius-md);
-
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
-
 .job-container h1 {
   text-align: center;
   margin-bottom: var(--spacing-lg);
 }
-
 .job-list {
   overflow-y: auto;
-
   display: flex;
   flex-direction: column;
   gap: 1rem;
-
   padding: 1em;
 }
-
 .job-card {
   background: #fff;
-
   border: 1px solid var(--border-color);
-
   border-radius: var(--radius-md);
-
   padding: 1.5rem;
-
   transition: 0.2s;
 }
-
 .job-card:hover {
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
 }
-
 .card-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-
 .delete-icon {
   color: var(--danger-color);
   font-size: 22px;
   cursor: pointer;
 }
-
 .delete-icon:hover {
   transform: scale(1.2);
 }
-
 @media (max-width: 768px) {
   .job-container {
     padding: var(--spacing-md);
   }
-
   .job-container h1 {
     font-size: var(--fs-lg);
   }
 }
-
 .loading-container,
 .empty-state {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
   height: 250px;
 }
-
 .spinner {
   font-size: 40px;
   color: var(--primary-color);
-
   animation: spin 1s linear infinite;
 }
-
 .loading-container p,
 .empty-state p {
   margin-top: var(--spacing-md);
 }
-
 .search-container {
   margin-bottom: var(--spacing-lg);
   padding: 1rem;
 }
-
 .search-input {
   width: 100%;
-
   padding: 0.85rem 1rem;
-
   border: 1px solid var(--border-color);
-
   border-radius: var(--radius-md);
-
   font-size: var(--fs-sm);
-
   outline: none;
-
   transition: all 0.2s ease;
 }
-
 .search-input::placeholder {
   color: #999;
 }
-
 .search-input:focus {
   border-color: var(--primary-color);
-
   box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.12);
 }
-
 .header-nav {
   padding: 0 1rem;
   font-weight: bold;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
   height: 5rem;
   background-color: #999;
 }
+.header-nav.sticky {
+  position: fixed; /* overrides the relative above */
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  animation: slideDown 0.2s ease-out;
+}
 
-.today-date {
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+/* Hamburger button hidden by default (desktop) */
+.hamburger-btn {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 28px;
+  height: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1100;
+}
+.hamburger-btn span {
+  display: block;
+  height: 3px;
+  width: 100%;
+  background-color: #333;
+  border-radius: 2px;
+}
+/* Close button hidden by default, shown only inside open mobile menu */
+.close-btn {
+  display: none;
+}
+/* Desktop nav layout */
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.nav-link {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+}
+.nav-link.active {
+  color: red;
+  font-weight: bold;
+}
+/* ----- Responsive: screens under 600px ----- */
+@media (max-width: 600px) {
+  .hamburger-btn {
+    display: flex;
+  }
+  .nav-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: #fff;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    /* hidden state */
+    transform: translateY(-100%);
+    opacity: 0;
+    visibility: hidden;
+    transition:
+      transform 0.3s ease,
+      opacity 0.3s ease;
+    z-index: 1000;
+  }
+  .nav-menu.open {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+  }
+  .nav-link {
+    font-size: 1.5rem;
+  }
+  .close-btn {
+    display: block;
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    font-size: 2rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    line-height: 1;
+    z-index: 1200;
+    color: #333;
+  }
+  .logout-btn {
+    display: none;
+  }
+}
+.logout-btn {
+  border: none;
+  outline: none;
+  background-color: orange;
   color: #fff;
+  letter-spacing: 0.5px;
+  font-weight: bold;
 }
 
 .footer {
-
   height: 4rem;
   background-color: #999;
   border-top: 5px solid pink;
@@ -154,16 +228,43 @@ min-height: 100vh;
   justify-content: center;
   align-items: center;
 }
-
-.home-page,
+.home-page {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 .about-page,
 .contact-page {
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 4rem;
   font-weight: bolder;
+}
+
+.welcome-wrapper {
+  font-weight: bold;
+  width: 100%;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.welcome-text {
+  font-size: 2rem;
+  color: rgb(59, 59, 146);
+}
+.form-controls {
+  display: flex;
+  gap: 1rem;
+}
+.edit-btn {
+  margin-right: 1rem;
+}
+.delete-btn {
+  background-color: red;
 }
 .nav-link {
   color: darkblue;
@@ -172,108 +273,58 @@ min-height: 100vh;
 .nav-link.active {
   color: orangered;
 }
-
-
 /* Form component css styles */
-
 .container {
-
-  width: 900px;
-
-  margin: 4rem;
-
+  width: 100%;
+  max-width: 900px;
+  margin: 2rem;
   padding: 30px;
-
   background: white;
-
   border-radius: 10px;
-
-  box-shadow:
-    0 0 10px rgba(0,0,0,.1);
-
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-h4 {
-  font-size: 16px;
-
+.form-heading {
+  color: crimson;
   text-align: center;
-
   margin-bottom: 20px;
-
 }
-
 form {
-
   display: flex;
-
   flex-direction: column;
-
   gap: 14px;
-
 }
-
 input,
 select,
 textarea {
-
   padding: 12px;
-
   border: 1px solid #ccc;
-
   border-radius: 6px;
-
 }
-
 textarea {
-
   height: 90px;
-
 }
-
 span,
 small {
-
-  color: crimson;
-
   font-size: 14px;
-
 }
-
 .doc-row {
-
   display: flex;
-
   gap: 10px;
-
   align-items: center;
-
 }
-
 button {
-
   padding: 10px 16px;
-
   border: none;
-
   border-radius: 5px;
-
   cursor: pointer;
-
   background: royalblue;
-
   color: white;
-
 }
-
 button:hover {
-
-  opacity: .9;
-
+  opacity: 0.9;
 }
-
 label {
   font-size: 12px;
-
   margin-right: 15px;
-
 }

@@ -1,64 +1,75 @@
-import { Link,NavLink } from "react-router-dom";
+import { useState } from "react";
+import { Link, NavLink } from "react-router-dom";
 import logoImg from "../../assets/logo.jpg";
-import { getTodayDate } from "../../utils/helpers";
 
 const Header = () => {
-  const todayDate = getTodayDate();
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const closeMenu = () => setMenuOpen(false);
+
   return (
     <div className="header-nav">
       <div>
-        <Link to="/">
+        <Link to="/" onClick={closeMenu}>
           <img src={logoImg} alt="logo" width={50} height={50} />
         </Link>
       </div>
-      <nav>
-        {/* Using inline styles for active link */}
+
+      {/* Hamburger button - only visible on small screens via CSS */}
+      {!menuOpen && (
+        <button
+          className="hamburger-btn"
+          onClick={() => setMenuOpen(true)}
+          aria-label="Open menu"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      )}
+
+      <nav className={menuOpen ? "nav-menu open" : "nav-menu"}>
+        {/* Close button - only visible when menu is open on small screens */}
+        <button
+          className="close-btn"
+          onClick={closeMenu}
+          aria-label="Close menu"
+        >
+          &times;
+        </button>
+
         <NavLink
           to="/"
+          onClick={closeMenu}
           className={({ isActive }) =>
             isActive ? "nav-link active" : "nav-link"
           }
-          // style={({ isActive }) => ({
-          //   color: isActive ? "red" : "black",
-          //   fontWeight: isActive ? "bold" : "normal",
-          //   textDecoration: "none",
-          //   marginRight: "15px",
-          // })}
         >
           Home
         </NavLink>
 
         <NavLink
           to="/about"
+          onClick={closeMenu}
           className={({ isActive }) =>
             isActive ? "nav-link active" : "nav-link"
           }
-          // style={({ isActive }) => ({
-          //   color: isActive ? "red" : "black",
-          //   fontWeight: isActive ? "bold" : "normal",
-          //   textDecoration: "none",
-          //   marginRight: "15px",
-          // })}
         >
           About
         </NavLink>
+
         <NavLink
           to="/contact"
+          onClick={closeMenu}
           className={({ isActive }) =>
             isActive ? "nav-link active" : "nav-link"
           }
-          // className={({ isActive }) => `nav-link ${isActive ? "active" : ""}`}
-
-          // style={({ isActive }) => ({
-          //   color: isActive ? "red" : "black",
-          //   fontWeight: isActive ? "bold" : "normal",
-          //   textDecoration: "none",
-          // })}
         >
           Contact
         </NavLink>
       </nav>
-      <div className="today-date">{todayDate}</div>
+
+      <button className="logout-btn">Logout</button>
     </div>
   );
 };
