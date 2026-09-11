@@ -213,6 +213,7 @@ export default function BankPortal() {
         min-h-screen
         w-full
         flex-col
+        pt-[100px]
         transition-colors
         duration-200
       "
@@ -240,6 +241,29 @@ export default function BankPortal() {
       --------------------------------------------------------------------- */}
 
       <Header />
+
+      <div
+        className="
+          box-border
+          min-h-[15px]
+          h-auto
+          w-full
+          ml-0
+          bg-[#ff6633]
+          px-3
+          pt-[10px]
+          pb-[5px]
+          text-right
+          text-xs
+          font-bold
+          leading-4
+          text-white
+          [overflow-wrap:anywhere]
+          shadow-[0_2px_5px_0_rgba(0,0,0,0.16),0_2px_10px_0_rgba(0,0,0,0.12)]
+        "
+      >
+        24x7x365 Helpline 1800 5700 / +9179 6629 6629(For NRI Customers)
+      </div>
 
       {/* ---------------------------------------------------------------------
           Main Login + Notice Area
@@ -275,7 +299,7 @@ export default function BankPortal() {
             rounded-lg
             p-4
             sm:p-6
-            lg:w-[440px]
+            lg:w-[380px]
             lg:shrink-0
           "
           style={{
@@ -295,72 +319,95 @@ export default function BankPortal() {
 
           {/* User ID */}
 
-          <label
-            htmlFor="user-id"
-            className="mb-1 block text-sm"
-            style={{
-              color: colors.text,
-            }}
-          >
-            User ID*
-          </label>
-
-          <input
-            id="user-id"
-            type="text"
-            value={userId}
-            onChange={(event) => setUserId(event.target.value)}
-            className="
-              mb-4
-              w-full
-              rounded
-              px-3
-              py-2
-              outline-none
-              focus-visible:ring-2
-              focus-visible:ring-[#B9862F]
-            "
-            style={{
-              border: `1px solid ${colors.border}`,
-              backgroundColor: colors.inputBg,
-              color: colors.text,
-            }}
-          />
+          <div className="relative mt-1 mb-4 w-full">
+            <input
+              id="user-id"
+              type="text"
+              value={userId}
+              onChange={(event) => setUserId(event.target.value)}
+              placeholder=" "
+              className="
+                peer
+                h-10
+                w-full
+                border-0
+                border-b
+                border-b-[#E0E0E0]
+                bg-transparent
+                px-0
+                pt-3
+                text-black
+                outline-none
+                focus:border-b-[#B9862F]
+                focus-visible:ring-0
+              "
+              style={{
+                color: colors.text,
+                backgroundColor: colors.inputBg,
+              }}
+            />
+            <label
+              htmlFor="user-id"
+              className="
+                pointer-events-none
+                absolute
+                left-0
+                top-1/2
+                -translate-y-1/2
+                text-sm
+                text-gray-500
+                transition-all
+                peer-focus:top-0
+                peer-focus:-translate-y-0
+                peer-focus:text-xs
+                peer-[:not(:placeholder-shown)]:top-0
+                peer-[:not(:placeholder-shown)]:-translate-y-0
+                peer-[:not(:placeholder-shown)]:text-xs
+              "
+            >
+              User ID*
+            </label>
+          </div>
 
           {/* Language */}
 
-          <label
-            htmlFor="language"
-            className="mb-1 block text-sm"
-            style={{
-              color: colors.subtext,
-            }}
-          >
-            Language*
-          </label>
+          <div className="mb-5 flex items-center gap-3">
+            <label
+              htmlFor="language"
+              className="min-w-0 flex-1 text-sm"
+              style={{
+                color: colors.subtext,
+              }}
+            >
+              Language*
+            </label>
 
-          <select
-            id="language"
-            defaultValue="English"
-            className="
-              mb-5
-              w-full
-              rounded
-              px-3
-              py-2
-              outline-none
-              focus-visible:ring-2
-              focus-visible:ring-[#B9862F]
-            "
-            style={{
-              border: `1px solid ${colors.border}`,
-              backgroundColor: colors.inputBg,
-              color: colors.text,
-            }}
-          >
-            <option>English</option>
-            <option>Hindi</option>
-          </select>
+            <select
+              id="language"
+              defaultValue="English"
+              className="
+                h-10
+                min-w-0
+                flex-1
+                border-0
+                border-b
+                border-b-[#E0E0E0]
+                bg-transparent
+                px-0
+                text-black
+                outline-none
+                focus:border-b-[#B9862F]
+                focus-visible:ring-0
+              "
+              style={{
+                backgroundColor: colors.inputBg,
+                color: colors.text,
+              }}
+            >
+              <option>English</option>
+              <option>Hindi</option>
+            </select>
+          </div>
 
           {/* Login */}
 
@@ -395,37 +442,56 @@ export default function BankPortal() {
               flex-col
               gap-1.5
               text-sm
+              text-[var(--main-color)]
             "
-            style={{
-              color: colors.accent,
-            }}
           >
             <a
-              href="#forgot-user-id"
-              className="
-                w-fit
-                hover:underline
-                focus-visible:rounded
-                focus-visible:outline-none
-                focus-visible:ring-2
-                focus-visible:ring-[#B9862F]
-              "
+              href="https://bobibanking.bankofbaroda.bank.in/corp/AuthenticationController?__START_TRAN_FLAG__=Y&FORMSGROUP_ID__=AuthenticationFG&__EVENT_ID__=LOAD&FG_BUTTONS__=LOAD&ACTION.LOAD=Y&AuthenticationFG.LOGIN_FLAG=1&BANK_ID=012&LANGUAGE_ID=001#"
+              className="w-fit hover:underline focus-visible:rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B9862F]"
+            >
+              Unlock User Id
+            </a>
+
+            <a
+              href="https://bobibanking.bankofbaroda.bank.in/corp/AuthenticationController?__START_TRAN_FLAG__=Y&FORMSGROUP_ID__=AuthenticationFG&__EVENT_ID__=LOAD&FG_BUTTONS__=LOAD&ACTION.LOAD=Y&AuthenticationFG.LOGIN_FLAG=1&BANK_ID=012&LANGUAGE_ID=001#"
+              className="w-fit hover:underline focus-visible:rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B9862F]"
+            >
+              Reset Security Answers
+            </a>
+
+            <a
+              href="https://bobibanking.bankofbaroda.bank.in/corp/AuthenticationController?FORMSGROUP_ID__=AuthenticationFG&__START_TRAN_FLAG__=Y&__EVENT_ID__=LOAD&ACTION.LOAD=Y&__CALL_MODE__=70&AuthenticationFG.LOGIN_FLAG=1&BANK_ID=012&USER_PRINCIPAL=&LANGUAGE_ID=001"
+              className="w-fit hover:underline focus-visible:rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B9862F]"
             >
               Forgot User ID
             </a>
 
             <a
-              href="#forgot-password"
-              className="
-                w-fit
-                hover:underline
-                focus-visible:rounded
-                focus-visible:outline-none
-                focus-visible:ring-2
-                focus-visible:ring-[#B9862F]
-              "
+              href="https://bobibanking.bankofbaroda.bank.in/corp/AuthenticationController?__START_TRAN_FLAG__=Y&FORMSGROUP_ID__=AuthenticationFG&__EVENT_ID__=LOAD&FG_BUTTONS__=LOAD&ACTION.LOAD=Y&AuthenticationFG.LOGIN_FLAG=1&BANK_ID=012&LANGUAGE_ID=001#"
+              className="w-fit hover:underline focus-visible:rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B9862F]"
             >
-              Set Password / Forgot Password
+              Disable User ID
+            </a>
+
+            <a
+              href="https://bobibanking.bankofbaroda.bank.in/corp/AuthenticationController?FORMSGROUP_ID__=AuthenticationFG&__START_TRAN_FLAG__=Y&__EVENT_ID__=LOAD&ACTION.LOAD=Y&__CALL_MODE__=81&AuthenticationFG.LOGIN_FLAG=1&BANK_ID=012&LANGUAGE_ID=001"
+              className="w-fit hover:underline focus-visible:rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B9862F]"
+            >
+              Online Registration using Debit Card
+            </a>
+
+            <a
+              href="https://bobibanking.bankofbaroda.bank.in/corp/AuthenticationController?__START_TRAN_FLAG__=Y&FORMSGROUP_ID__=AuthenticationFG&__EVENT_ID__=LOAD&FG_BUTTONS__=LOAD&ACTION.LOAD=Y&AuthenticationFG.LOGIN_FLAG=1&BANK_ID=012&LANGUAGE_ID=001#"
+              className="w-fit hover:underline focus-visible:rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B9862F]"
+            >
+              Set Password/Forgot Password
+            </a>
+
+            <a
+              href="https://bobibanking.bankofbaroda.bank.in/corp/AuthenticationController?__START_TRAN_FLAG__=Y&FORMSGROUP_ID__=AuthenticationFG&__EVENT_ID__=LOAD&FG_BUTTONS__=LOAD&ACTION.LOAD=Y&AuthenticationFG.LOGIN_FLAG=1&BANK_ID=012&LANGUAGE_ID=001#"
+              className="w-fit hover:underline focus-visible:rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#B9862F]"
+            >
+              Mobile OTP App Activation
             </a>
           </div>
         </section>
@@ -587,4 +653,3 @@ export default function BankPortal() {
     </div>
   );
 }
-

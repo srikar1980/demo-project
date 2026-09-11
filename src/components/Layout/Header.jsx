@@ -1,5 +1,6 @@
 import { ChevronDown, QrCode } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import loginLogo from "../../assets/login-logo.png";
 import useTheme from "../../hooks/useTheme";
 
 const COUNTRIES = [
@@ -220,17 +221,20 @@ const Header = () => {
   return (
     <header
       className="
-        sticky
+        fixed
         top-0
-        z-[1000]
+        z-[100]
+        !h-[100px]
         w-full
         border-b
+        [border-bottom-color:#d2d2d2]
+        [border-bottom-style:ridge]
+        bg-white
+        shadow-[0_8px_17px_0_rgba(0,0,0,0.2),0_6px_20px_0_rgba(0,0,0,0.19)]
         transition-colors
         duration-200
       "
       style={{
-        backgroundColor: colors.panel,
-        borderColor: colors.border,
         color: colors.text,
       }}
     >
@@ -238,7 +242,7 @@ const Header = () => {
         className="
           mx-auto
           grid
-          min-h-[112px]
+          min-h-[100px]
           w-full
           max-w-[1440px]
           grid-cols-[220px_minmax(0,1fr)]
@@ -283,23 +287,20 @@ const Header = () => {
               focus-visible:ring-offset-4
             "
           >
-            <span
+            <img
+              src={loginLogo}
+              alt="bob World Internet"
               className="
                 block
-                font-sans
-                text-[40px]
-                font-black
-                tracking-[-0.06em]
-                max-[900px]:text-[36px]
-                max-[700px]:text-[38px]
-                max-[430px]:text-[32px]
+                h-auto
+                w-[240px]
+                max-w-full
+                max-[700px]:h-[62px]
+                max-[700px]:w-[154px]
+                max-[430px]:h-[50px]
+                max-[430px]:w-[124px]
               "
-              style={{
-                color: isDark ? colors.text : colors.primary,
-              }}
-            >
-              Demo Bank
-            </span>
+            />
           </a>
         </div>
 
