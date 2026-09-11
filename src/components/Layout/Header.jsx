@@ -1,4 +1,4 @@
-import { ChevronDown, QrCode } from "lucide-react";
+import { ChevronDown, MapPin, Phone, QrCode } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import loginLogo from "../../assets/login-logo.png";
 import useTheme from "../../hooks/useTheme";
@@ -151,7 +151,7 @@ const Header = () => {
     focus-visible:ring-[var(--main-color)]
     focus-visible:ring-offset-2
     max-[900px]:text-xs
-    ${isDark ? "text-white" : "text-black"}
+    text-black
   `;
 
   // ------------------------------------------------------------
@@ -159,6 +159,9 @@ const Header = () => {
   // ------------------------------------------------------------
 
   const actionLinkClass = `
+    inline-flex
+    items-center
+    gap-1
     whitespace-nowrap
     text-[13px]
     font-semibold
@@ -172,7 +175,6 @@ const Header = () => {
     focus-visible:ring-[var(--main-color)]
     focus-visible:ring-offset-2
     max-[900px]:text-xs
-    ${isDark ? "text-white" : "text-[#111]"}
   `;
 
   // ------------------------------------------------------------
@@ -670,12 +672,18 @@ const Header = () => {
                 max-[900px]:gap-2.5
               "
             >
-              {["Locate Us", "Contact Us", "Ask ADI"].map((label) => (
+              {[
+                { label: "Locate Us", icon: MapPin },
+                { label: "Contact Us", icon: Phone },
+                { label: "Ask ADI", icon: null },
+              ].map(({ label, icon: Icon }) => (
                 <a
                   key={label}
                   href={`#${label.toLowerCase().replaceAll(" ", "-")}`}
                   className={actionLinkClass}
+                  style={{ color: "#000000" }}
                 >
+                  {Icon && <Icon size={15} aria-hidden="true" />}
                   {label}
                 </a>
               ))}

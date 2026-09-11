@@ -177,7 +177,7 @@ function Modal({ isOpen, onClose, title, children, colors }) {
 // -----------------------------------------------------------------------------
 
 export default function BankPortal() {
-  const { colors } = useTheme();
+  const { colors, isDark } = useTheme();
 
   const [noticeIndex, setNoticeIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
@@ -261,6 +261,10 @@ export default function BankPortal() {
           [overflow-wrap:anywhere]
           shadow-[0_2px_5px_0_rgba(0,0,0,0.16),0_2px_10px_0_rgba(0,0,0,0.12)]
         "
+        style={{
+          backgroundColor: isDark ? colors.ribbon : "var(--main-color)",
+          color: colors.ribbonText,
+        }}
       >
         24x7x365 Helpline 1800 5700 / +9179 6629 6629(For NRI Customers)
       </div>
@@ -442,8 +446,10 @@ export default function BankPortal() {
               flex-col
               gap-1.5
               text-sm
-              text-[var(--main-color)]
             "
+            style={{
+              color: isDark ? colors.accent : "var(--main-color)",
+            }}
           >
             <a
               href="https://bobibanking.bankofbaroda.bank.in/corp/AuthenticationController?__START_TRAN_FLAG__=Y&FORMSGROUP_ID__=AuthenticationFG&__EVENT_ID__=LOAD&FG_BUTTONS__=LOAD&ACTION.LOAD=Y&AuthenticationFG.LOGIN_FLAG=1&BANK_ID=012&LANGUAGE_ID=001#"
